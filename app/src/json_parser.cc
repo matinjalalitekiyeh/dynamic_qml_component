@@ -28,7 +28,6 @@ QVector<backend_t> dqc::json_parser::load_backend_config(const QString &config_p
 
     QJsonArray config_array = config_doc.array();
 
-    qInfo() << "Backend";
     for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
         backend_t backend;
@@ -44,7 +43,6 @@ QVector<backend_t> dqc::json_parser::load_backend_config(const QString &config_p
         }
 
         ret_vect.append(backend);
-        // qInfo() << "Id: " << backend.id << " msec: " << backend.msec << " min: " << backend.min << " max: " << backend.max;
     }
 
  return ret_vect;
@@ -70,7 +68,6 @@ QVector<frontend_t> dqc::json_parser::load_frontend_config(const QString &config
 
     QJsonArray config_array = config_doc.array();
 
-    qInfo() << "Frontend";
     for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
         frontend_t front;
@@ -86,7 +83,6 @@ QVector<frontend_t> dqc::json_parser::load_frontend_config(const QString &config
         }
 
         ret_vect.append(front);
-        // qInfo() << "id: " << front.id << " x: " << front.x << " y: " << front.y << " color: " << front.color << " datasrc: " << front.data_source;
     }
 
     return ret_vect;
