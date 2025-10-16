@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
+#include <src/dqc_model.hxx>
 
 namespace dqc {
 
@@ -80,6 +81,8 @@ private:
     QQmlApplicationEngine m_engine; /* <- QML application engine for UI management */
     u_int8_t __pad[4];
     int m_exit_code;
+
+    dqc::dqc_model m_model;
 };
 
 }
