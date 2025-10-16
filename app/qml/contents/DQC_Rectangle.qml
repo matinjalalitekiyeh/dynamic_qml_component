@@ -8,21 +8,11 @@ Rectangle {
     radius:         8;
     border.color:   "#88888888";
 
-    signal is_left_zone(bool is_at_left_zone);
-
-    onXChanged: {
-        if (((rect.width) + rect.x) > mainwindow.width/2) {
-            rect_txt.text = "Right";
-            is_left_zone(false);
-        }else{
-            is_left_zone(true);
-            rect_txt.text = "Left";
-        }
-    }
+    property bool is_at_left_zone: (((rect.width) + rect.x) < mainwindow.width/2);
+    property string text: "";
 
     Label {
-        id: rect_txt;
-        text: "Left";
+        text: rect.text;
         anchors.centerIn: parent;
         color: "black";
     }
@@ -32,7 +22,7 @@ Rectangle {
         running: true;
 
         PropertyAnimation {
-            to: mainwindow.width - rect.width;
+            to: (mainwindow.width - rect.width);
             duration: Math.abs((mainwindow.width - rect.width - rect.x) / speed);
         }
 
