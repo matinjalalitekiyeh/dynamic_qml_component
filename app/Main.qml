@@ -27,19 +27,15 @@ ApplicationWindow {
                     z: 99;
           }/* right side rectangle to seperate half win */
 
-
-          DQC_Rectangle {
-                    color: "cyan";
-                    x: 100;
-                    y: 300;
-                    text: !is_at_left_zone ? "Right" : "Left";
+          Repeater {
+                    model: m_model;
+                    delegate:
+                        DQC_Rectangle {
+                                  // color: "cyan";
+                                  x: (width/4)*index;
+                                  y: height*index;
+                                  text: !is_at_left_zone ? "Right "+index : "Left "+index ;
+                        }
           }
 
-          DQC_Rectangle {
-                    color: "red";
-                    x: 200;
-                    y: 450;
-                    text: !is_at_left_zone ? "Right" : "Left";
-
-          }
 }
