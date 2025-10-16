@@ -27,20 +27,19 @@ ApplicationWindow {
                     z: 99;
           }/* right side rectangle to seperate half win */
 
-          property real baseDuration: 10000 // Base duration for full width
-          property real speed: (mainwindow.width - 250) / baseDuration // pixels per millisecond
 
           DQC_Rectangle {
                     color: "cyan";
                     x: 100;
                     y: 300;
-                    onIs_left_zone: console.log("is at left zone: " + is_at_left_zone + " " + color);
+                    text: !is_at_left_zone ? "Right" : "Left";
           }
 
           DQC_Rectangle {
                     color: "red";
                     x: 200;
                     y: 450;
-                    onIs_left_zone: console.log("is at left zone: " + is_at_left_zone + " " + color);
+                    text: !is_at_left_zone ? "Right" : "Left";
+
           }
 }
