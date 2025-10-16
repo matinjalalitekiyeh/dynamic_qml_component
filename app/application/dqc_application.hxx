@@ -27,9 +27,11 @@ public:
     [[nodiscard]]int error() const noexcept;
 
 private:
+    void post_init();
+
+private:
     QQmlApplicationEngine m_engine;
     u_int8_t __pad[4];
-    void post_init();
     int m_exit_code;
 };
 
