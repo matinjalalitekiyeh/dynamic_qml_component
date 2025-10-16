@@ -36,7 +36,7 @@ ApplicationWindow {
                                   y: initial_y;
                                   text: is_at_left_zone ? data_source+" "+random_num : "XXXXXX";
                                   color: _color;
-                                  interval: interval;
+                                  interval: _interval;
                                   onRandom_numChanged: is_at_left_zone ? data_source+" "+random_num : "XXXXXX";
                         }
           }

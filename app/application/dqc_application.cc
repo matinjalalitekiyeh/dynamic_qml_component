@@ -54,7 +54,8 @@ void dqc_application::post_init()
                 property->set_interval(b.msec);
                 property->set_random_from(b.min);
                 property->set_random_to(b.max);
-                property->set_random_num(100);
+                // property->set_random_num(b.msec);
+                qDebug() << b.msec;
 
                 m_model.add_dqc_rect(property);
                 // qDebug() << "**********FOUND*******FOUND******FOUND***********************";

@@ -126,7 +126,7 @@ QHash<int, QByteArray> dqc_model::roleNames() const
     roles[static_cast<int>(dqc::DQC_Roles::roles::Color)] = "_color";
     roles[static_cast<int>(dqc::DQC_Roles::roles::Initial_x)] = "initial_x";
     roles[static_cast<int>(dqc::DQC_Roles::roles::Initial_y)] = "initial_y";
-    roles[static_cast<int>(dqc::DQC_Roles::roles::Interval)] = "interval";
+    roles[static_cast<int>(dqc::DQC_Roles::roles::Interval)] = "_interval";
     roles[static_cast<int>(dqc::DQC_Roles::roles::Random_num)] = "random_num";
     roles[static_cast<int>(dqc::DQC_Roles::roles::Random_from)] = "random_from";
     roles[static_cast<int>(dqc::DQC_Roles::roles::Random_to)] = "random_to";
