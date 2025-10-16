@@ -10,7 +10,14 @@ ApplicationWindow {
           width:    Constants.width;
           height:   Constants.height;
           color:    Constants.background_color;
+
+          visibility: "Maximized";
           visible:  true;
+
+          /* ! qmlproperty: Base duration for full width */
+          property real baseDuration: 10000;
+          /* ! qmlproperty: pixels per millisecond */
+          property real speed: (mainwindow.width - 250) / baseDuration;
 
           Rectangle {
                     anchors.right: parent.right;
