@@ -17,7 +17,10 @@ void dqc_application::init_for_normal_boot()
        &m_engine,
        &QQmlApplicationEngine::objectCreationFailed,
        this,
-       []() { QCoreApplication::exit(-1); },
+       [&]() {
+            m_exit_code = -1;
+            QCoreApplication::exit(-1);
+        },
        Qt::QueuedConnection);
    m_engine.loadFromModule("dynamic_qml_component/app", "Main");
 
