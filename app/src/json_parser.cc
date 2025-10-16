@@ -49,7 +49,42 @@ bool dqc::json_parser::load_backend_config(const QString &config_path)
 
 bool dqc::json_parser::load_frontend_config(const QString &config_path)
 {
+    QFile config_file(config_path);
+    if (!config_file.open(QIODevice::ReadOnly)) {
+        qWarning() << "Current directory:" << QDir::currentPath();
+        qWarning() << "Could not open backend config file:" << config_path;
+        return false;
+    }
 
+    QByteArray config_data = config_file.readAll();
+    QJsonDocument config_doc = QJsonDocument::fromJson(config_data);
+
+    if (!config_doc.isArray()) {
+        qWarning() << "Invalid backend config format - expected array";
+        return false;
+    }
+
+    QJsonArray config_array = config_doc.array();
+
+    qInfo() << "Frontend";
+    for (const QJsonValue& value : config_array) {
+        QJsonObject config_obj = value.toObject();
+
+        QString id = config_obj["id"].toString();
+        int x = config_obj["x"].toInt();
+        int y = config_obj["y"].toInt();
+        int color_hex = config_obj["color-hex"].toInt();
+        QString data_source = config_obj["dataSource"].toString();
+
+        if (id.isEmpty()) {
+            qWarning() << "Invalid generator configuration:" << id;
+            continue;
+        }
+
+        qInfo() << id << x << y << color_hex << data_source;
+    }
+
+    return true;
 }
 
 }
