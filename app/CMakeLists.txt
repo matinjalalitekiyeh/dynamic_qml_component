@@ -6,6 +6,7 @@ set(APP_SOURCES
     application/dqc_application.cc
     src/dqc_proprty.cc
     src/dqc_model.cc
+    src/json_parser.cc
     )
 
 set(APP_HEADERS
@@ -13,6 +14,7 @@ set(APP_HEADERS
     application/dqc_application.hxx
     src/dqc_proprty.hxx
     src/dqc_model.hxx
+    src/json_parser.hxx
     )
 
 qt_add_executable(
