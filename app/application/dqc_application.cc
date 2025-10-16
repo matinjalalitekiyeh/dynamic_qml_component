@@ -11,6 +11,9 @@ dqc_application::dqc_application(int &argc, char *argv[])
 void dqc_application::init_common() const noexcept
 {
     m_engine.rootContext()->setContextProperty("m_model", QVariant::fromValue(&m_model));
+
+
+
 }
 
 void dqc_application::init_for_normal_boot()
@@ -37,6 +40,8 @@ int dqc_application::error() const noexcept
 
 void dqc_application::post_init()
 {
+    m_parser.load_backend_config("backend_3.json");
+    m_parser.load_frontend_config("frontend.json");
     for (int i = 0; i < 20; i++) {
         m_model.add_dqc_rect();
     }
