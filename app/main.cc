@@ -1,7 +1,10 @@
 #include <application/dqc_application.hxx>
+#include "version.hxx"
 
 int main(int argc, char *argv[])
 {
+    (void)::cmake::version::print_version();
+
     auto app = dqc::dqc_application::instance(argc, argv);
     Q_CHECK_PTR(app);
     if(app->error()) {
