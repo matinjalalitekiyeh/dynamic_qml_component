@@ -1,4 +1,4 @@
-find_package(Qt6 REQUIRED COMPONENTS Quick Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Quick Widgets Qml)
 qt_standard_project_setup(REQUIRES 6.8)
 
 set(APP_SOURCES
@@ -40,7 +40,8 @@ target_include_directories(
 
 target_link_libraries(
     ${EXECUTABLE_NAME}
-    PRIVATE
+    PUBLIC
     Qt6::Quick
     Qt6::Widgets
+    Qt6::Qml
 )
