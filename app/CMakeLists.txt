@@ -1,9 +1,19 @@
 find_package(Qt6 REQUIRED COMPONENTS Quick Widgets)
 qt_standard_project_setup(REQUIRES 6.8)
 
+set(APP_SOURCES
+    main.cc
+    application/dqc_application.cc
+    )
+
+set(APP_HEADERS
+    application/dqc_application.hxx
+    )
+
 qt_add_executable(
     ${EXECUTABLE_NAME}
-    main.cpp
+    ${APP_SOURCES}
+    ${APP_HEADERS}
 )
 
 qt_add_qml_module(
