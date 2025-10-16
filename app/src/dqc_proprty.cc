@@ -13,7 +13,6 @@ dqc_rect_properties::dqc_rect_properties(QObject *parent)
     , m_random_from(0)
     , m_random_to(0)
 {
-
 }
 
 QString dqc_rect_properties::data_source() const

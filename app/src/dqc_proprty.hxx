@@ -2,6 +2,8 @@
 #define DQC_PROPERTY_HXX
 
 #include <QObject>
+#include <QColor>
+#include <QString>
 
 namespace dqc {
 
@@ -20,17 +22,16 @@ class dqc_rect_properties
     Q_PROPERTY(int random_from READ random_from WRITE set_random_from NOTIFY random_from_changed FINAL)
     Q_PROPERTY(int random_to READ random_to WRITE set_random_to NOTIFY random_to_changed FINAL)
 
-Q_OBJECT
+    Q_OBJECT
+public:
     explicit
-    dqc_rect_properties(QObject *parent = nullptr);
+        dqc_rect_properties(QObject *parent = nullptr);
 
     dqc_rect_properties(const dqc_rect_properties&) = delete;
     dqc_rect_properties& operator=(const dqc_rect_properties&) = delete;
     dqc_rect_properties(const dqc_rect_properties&&) = delete;
     dqc_rect_properties& operator=(const dqc_rect_properties&&) = delete;
 
-
-public:
     QString data_source() const;
     void set_data_source(const QString &newData_source);
 
