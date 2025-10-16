@@ -8,13 +8,14 @@ json_parser::json_parser(QObject *parent)
 {
 }
 
-bool dqc::json_parser::load_backend_config(const QString &config_path)
+QVector<backend_t> dqc::json_parser::load_backend_config(const QString &config_path)
 {
     QFile config_file(config_path);
+    QVector<backend_t> ret_vect;
     if (!config_file.open(QIODevice::ReadOnly)) {
         qWarning() << "Current directory:" << QDir::currentPath();
         qWarning() << "Could not open backend config file:" << config_path;
-        return false;
+        return ret_vect;
     }
 
     QByteArray config_data = config_file.readAll();
@@ -22,7 +23,7 @@ bool dqc::json_parser::load_backend_config(const QString &config_path)
 
     if (!config_doc.isArray()) {
         qWarning() << "Invalid backend config format - expected array";
-        return false;
+        return ret_vect;
     }
 
     QJsonArray config_array = config_doc.array();
@@ -30,30 +31,33 @@ bool dqc::json_parser::load_backend_config(const QString &config_path)
     qInfo() << "Backend";
     for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
+        backend_t backend;
 
-        QString id = config_obj["id"].toString();
-        int msec = config_obj["msec"].toInt();
-        int min = config_obj["min"].toInt();
-        int max = config_obj["max"].toInt();
+        backend.id = config_obj["id"].toString();
+        backend.msec = config_obj["msec"].toInt();
+        backend.min = config_obj["min"].toInt();
+        backend.max = config_obj["max"].toInt();
 
-        if (id.isEmpty() || msec <= 0 || min >= max) {
-            qWarning() << "Invalid generator configuration:" << id << msec << min << max;
+        if (backend.id.isEmpty() || backend.msec <= 0 || backend.min >= backend.max) {
+            qWarning() << "Invalid generator configuration:" << backend.id << backend.msec << backend.min << backend.max;
             continue;
         }
 
-        qInfo() << "Id: " << id << " msec: " << msec << " min: " << min << " max: " << max;
+        ret_vect.append(backend);
+        // qInfo() << "Id: " << backend.id << " msec: " << backend.msec << " min: " << backend.min << " max: " << backend.max;
     }
 
-    return true;
+ return ret_vect;
 }
 
-bool dqc::json_parser::load_frontend_config(const QString &config_path)
+QVector<frontend_t> dqc::json_parser::load_frontend_config(const QString &config_path)
 {
     QFile config_file(config_path);
+    QVector<frontend_t> ret_vect;
     if (!config_file.open(QIODevice::ReadOnly)) {
         qWarning() << "Current directory:" << QDir::currentPath();
         qWarning() << "Could not open backend config file:" << config_path;
-        return false;
+        return ret_vect;
     }
 
     QByteArray config_data = config_file.readAll();
@@ -61,7 +65,7 @@ bool dqc::json_parser::load_frontend_config(const QString &config_path)
 
     if (!config_doc.isArray()) {
         qWarning() << "Invalid backend config format - expected array";
-        return false;
+        return ret_vect;
     }
 
     QJsonArray config_array = config_doc.array();
@@ -69,22 +73,23 @@ bool dqc::json_parser::load_frontend_config(const QString &config_path)
     qInfo() << "Frontend";
     for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
+        frontend_t front;
+        front.id = config_obj["id"].toString();
+        front.x = config_obj["x"].toInt();
+        front.y = config_obj["y"].toInt();
+        front.color = QColor(config_obj["color-hex"].toString());
+        front.data_source = config_obj["dataSource"].toString();
 
-        QString id = config_obj["id"].toString();
-        int x = config_obj["x"].toInt();
-        int y = config_obj["y"].toInt();
-        QString color_hex = config_obj["color-hex"].toString();
-        QString data_source = config_obj["dataSource"].toString();
-
-        if (id.isEmpty()) {
-            qWarning() << "Invalid generator configuration:" << id;
+        if (front.id.isEmpty()) {
+            qWarning() << "Invalid generator configuration:" << front.id;
             continue;
         }
 
-        qInfo() << "id: " << id << " x: " << x << " y: " << y << " color: " << color_hex << " datasrc: " << data_source;
+        ret_vect.append(front);
+        // qInfo() << "id: " << front.id << " x: " << front.x << " y: " << front.y << " color: " << front.color << " datasrc: " << front.data_source;
     }
 
-    return true;
+    return ret_vect;
 }
 
 }
