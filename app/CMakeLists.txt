@@ -4,11 +4,15 @@ qt_standard_project_setup(REQUIRES 6.8)
 set(APP_SOURCES
     main.cc
     application/dqc_application.cc
+    src/dqc_proprty.cc
+    src/dqc_model.cc
     )
 
 set(APP_HEADERS
     version.hxx
     application/dqc_application.hxx
+    src/dqc_proprty.hxx
+    src/dqc_model.hxx
     )
 
 qt_add_executable(
