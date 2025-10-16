@@ -28,7 +28,7 @@ bool dqc::json_parser::load_backend_config(const QString &config_path)
     QJsonArray config_array = config_doc.array();
 
     qInfo() << "Backend";
-    for (const QJsonValue& value : config_array) {
+    for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
 
         QString id = config_obj["id"].toString();
@@ -67,13 +67,13 @@ bool dqc::json_parser::load_frontend_config(const QString &config_path)
     QJsonArray config_array = config_doc.array();
 
     qInfo() << "Frontend";
-    for (const QJsonValue& value : config_array) {
+    for (const QJsonValue& value : std::as_const(config_array)) {
         QJsonObject config_obj = value.toObject();
 
         QString id = config_obj["id"].toString();
         int x = config_obj["x"].toInt();
         int y = config_obj["y"].toInt();
-        int color_hex = config_obj["color-hex"].toInt();
+        QString color_hex = config_obj["color-hex"].toString();
         QString data_source = config_obj["dataSource"].toString();
 
         if (id.isEmpty()) {
