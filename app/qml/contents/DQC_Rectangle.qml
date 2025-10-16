@@ -44,9 +44,9 @@ Rectangle {
         }
     }
     Timer {
-        interval: interval;
-        repeat: true;
-        running: true;
-        onTriggered: random_num = get_random_int(random_min, random_max);
+        interval: rect.interval;
+        repeat: rect.is_at_left_zone;
+        running: rect.is_at_left_zone;
+        onTriggered: rect.random_num = rect.get_random_int(rect.random_min, rect.random_max);
     }
 }
