@@ -7,6 +7,7 @@ set(APP_SOURCES
     )
 
 set(APP_HEADERS
+    version.hxx
     application/dqc_application.hxx
     )
 
