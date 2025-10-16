@@ -8,8 +8,20 @@ Rectangle {
     radius:         8;
     border.color:   "#88888888";
 
+    function get_random_int(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // function generate_random() {
+    //     return getRandomInt(-10, 20);
+    // }
+
     property bool is_at_left_zone: (((rect.width) + rect.x) < mainwindow.width/2);
     property string text: "";
+    property int random_min: 0;
+    property int random_max: 100;
+    property int random_num: 0;
+    property int interval: 1000;
 
     Label {
         text: rect.text;
@@ -30,5 +42,11 @@ Rectangle {
             to: 0;
             duration: Math.abs((0 - (mainwindow.width - rect.width)) / speed);
         }
+    }
+    Timer {
+        interval: interval;
+        repeat: true;
+        running: true;
+        onTriggered: random_num = get_random_int(random_min, random_max);
     }
 }
