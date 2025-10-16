@@ -31,8 +31,16 @@ ApplicationWindow {id: main;
           radius: 8
           y: 50
 
-          Label {
-              text: "Hello world"
+          onXChanged: {
+              if (((xxx.width) + xxx.x) > main.width/2) {
+                  xxx_txt.text = "Right";
+              }else{
+                  xxx_txt.text = "Left";
+              }
+          }
+
+          Label {id: xxx_txt;
+              text: "Left"
               anchors.centerIn: parent
               color: "black"
           }
@@ -65,8 +73,16 @@ ApplicationWindow {id: main;
           radius: 8
           y: 400
 
-          Label {
-              text: "Hello world"
+          onXChanged: {
+              if (((xxx2.width) + xxx2.x) > main.width/2) {
+                  xxx2_txt.text = "Right";
+              }else{
+                  xxx2_txt.text = "Left";
+              }
+          }
+
+          Label {id: xxx2_txt
+              text: "Left"
               anchors.centerIn: parent
               color: "black"
           }
