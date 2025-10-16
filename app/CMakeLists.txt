@@ -25,6 +25,7 @@ qt_add_qml_module(
         Main.qml
         qml/constants/qmldir
         qml/constants/Constants.qml
+        qml/contents/DQC_Rectangle.qml
 )
 
 target_include_directories(
