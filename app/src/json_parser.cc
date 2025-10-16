@@ -41,7 +41,7 @@ bool dqc::json_parser::load_backend_config(const QString &config_path)
             continue;
         }
 
-        qInfo() << id << msec << min << max;
+        qInfo() << "Id: " << id << " msec: " << msec << " min: " << min << " max: " << max;
     }
 
     return true;
@@ -81,7 +81,7 @@ bool dqc::json_parser::load_frontend_config(const QString &config_path)
             continue;
         }
 
-        qInfo() << id << x << y << color_hex << data_source;
+        qInfo() << "id: " << id << " x: " << x << " y: " << y << " color: " << color_hex << " datasrc: " << data_source;
     }
 
     return true;

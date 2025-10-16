@@ -11,9 +11,6 @@ dqc_application::dqc_application(int &argc, char *argv[])
 void dqc_application::init_common() const noexcept
 {
     m_engine.rootContext()->setContextProperty("m_model", QVariant::fromValue(&m_model));
-
-
-
 }
 
 void dqc_application::init_for_normal_boot()
