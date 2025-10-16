@@ -2,7 +2,7 @@ find_package(Qt6 REQUIRED COMPONENTS Quick Widgets)
 qt_standard_project_setup(REQUIRES 6.8)
 
 set(APP_SOURCES
-    main.cpp
+    main.cc
     application/dqc_application.cc
     )
 
