@@ -1,8 +1,12 @@
-import QtQuick
+import QtQuick.Controls
 
-Window {
-    width: 640
-    height: 480
-    visible: true
-    title: qsTr("Hello World")
+import "qml/constants"
+
+ApplicationWindow {
+    title:  Constants.project_name;
+    width:  Constants.width;
+    height: Constants.height;
+    visible: true;
+    x: width/2;
+    y: height/2;
 }

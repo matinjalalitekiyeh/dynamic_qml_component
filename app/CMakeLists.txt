@@ -23,6 +23,8 @@ qt_add_qml_module(
     VERSION 1.0
     QML_FILES
         Main.qml
+        qml/constants/qmldir
+        qml/constants/Constants.qml
 )
 
 target_include_directories(
