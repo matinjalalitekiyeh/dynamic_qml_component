@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <src/dqc_model.hxx>
+#include <src/json_parser.hxx>
 
 namespace dqc {
 
@@ -83,6 +84,7 @@ private:
     int m_exit_code;
 
     dqc::dqc_model m_model;
+    dqc::json_parser m_parser;
 };
 
 }

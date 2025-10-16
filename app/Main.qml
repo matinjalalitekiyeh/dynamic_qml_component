@@ -32,9 +32,12 @@ ApplicationWindow {
                     delegate:
                         DQC_Rectangle {
                                   // color: "cyan";
-                                  x: (width/4)*index;
-                                  y: height*index;
-                                  text: !is_at_left_zone ? "Right "+index : "Left "+index ;
+                                  x: initial_x;
+                                  y: initial_y;
+                                  text: is_at_left_zone ? data_source+" "+random_num : "XXXXXX";
+                                  color: _color;
+                                  interval: interval;
+                                  onRandom_numChanged: is_at_left_zone ? data_source+" "+random_num : "XXXXXX";
                         }
           }
 

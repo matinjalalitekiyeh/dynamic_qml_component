@@ -1,0 +1,37 @@
+[
+    {
+        "id": "box_1_1",
+        "x": 50,
+        "y": 100,
+        "color-hex": "#4ab471",
+        "dataSource": "data_1_1"
+    },
+    {
+        "id": "box_1_2",
+        "x": 200,
+        "y": 200,
+        "color-hex": "#b44a71",
+        "dataSource": "data_1_2"
+    },
+    {
+        "id": "box_2_1",
+        "x": 500,
+        "y": 300,
+        "color-hex": "#4a71b4",
+        "dataSource": "data_2_1"
+    },
+    {
+        "id": "box_2_2",
+        "x": 50,
+        "y": 300,
+        "color-hex": "#b4714a",
+        "dataSource": "data_2_2"
+    },
+    {
+        "id": "box_3_1",
+        "x": 650,
+        "y": 250,
+        "color-hex": "#714ab4",
+        "dataSource": "data_3_1"
+    }
+]
