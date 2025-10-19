@@ -13,5 +13,5 @@ QtObject {
     readonly property double height: Screen.height;
 
     //! qmlproperty: color in appwin.
-    readonly property color background_color: "white";
+    readonly property color background_color: "#202020";
 }

@@ -23,15 +23,22 @@
     {
         "id": "box_2_2",
         "x": 50,
-        "y": 300,
+        "y": 600,
         "color-hex": "#b4714a",
+        "dataSource": "data_2_2"
+    },
+    {
+        "id": "box_2_3",
+        "x": 500,
+        "y": 490,
+        "color-hex": "#aa654123",
         "dataSource": "data_2_2"
     },
     {
         "id": "box_3_1",
         "x": 650,
-        "y": 250,
+        "y": 395,
         "color-hex": "#714ab4",
-        "dataSource": "data_3_1"
+        "dataSource": "data_1_1"
     }
 ]

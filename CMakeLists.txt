@@ -11,13 +11,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(EXECUTABLE_NAME "appdynamic_qml_component")
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/cnfg/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/app/cnfg)
+
 add_subdirectory(configured)
 
 add_subdirectory(app)
-
-# include(GNUInstallDirs)
-# install(TARGETS ${EXECUTABLE_NAME}
-#     BUNDLE DESTINATION .
-#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-# )
