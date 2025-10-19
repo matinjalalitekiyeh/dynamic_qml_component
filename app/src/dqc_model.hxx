@@ -37,8 +37,37 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
     QHash<int, QByteArray> roleNames() const override;
 
+    /**
+    * @brief Adds an existing dqc_rect_properties object to the model
+    *
+    * @param property Pointer to the dqc_rect_properties object to add
+    *
+    * @note The model takes ownership of the property object
+    * @note Emits rowsInserted() signal after addition
+    * @note Q_INVOKABLE makes this method callable from QML
+    */
     Q_INVOKABLE void add_dqc_rect(dqc::dqc_rect_properties *property);
+
+    /**
+    * @brief Creates and adds a new dqc_rect_properties object to the model
+    *
+    * @note Creates a default-initialized dqc_rect_properties object
+    * @note Emits rowsInserted() signal after addition
+    * @note Q_INVOKABLE makes this method callable from QML
+    */
     Q_INVOKABLE void add_dqc_rect();
+
+    /**
+    * @brief Removes a dqc_rect_properties object from the model at the specified index
+    *
+    * @param index Row index of the item to remove
+    *
+    * @note Deletes the removed dqc_rect_properties object
+    * @note Emits rowsRemoved() signal after removal
+    * @note Q_INVOKABLE makes this method callable from QML
+    *
+    * @warning Index must be valid (0 <= index < rowCount())
+    */
     Q_INVOKABLE void remove_dqc_rect(const int index);
 
 private:
