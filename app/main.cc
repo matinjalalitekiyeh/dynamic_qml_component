@@ -1,20 +1,27 @@
-#include <QApplication>
-#include <QQmlApplicationEngine>
-
-#include <config.hpp>
+#include <application/dqc_application.hxx>
+#include "version.hxx"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    (void)::cmake::version::print_version();
 
-    QQmlApplicationEngine engine;
-    QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreationFailed,
-        &app,
-        []() { QCoreApplication::exit(-1); },
-        Qt::QueuedConnection);
-    engine.loadFromModule("dynamic_qml_component/app", "Main");
+    auto app = dqc::dqc_application::instance(argc, argv);
+    Q_CHECK_PTR(app);
+    if(app->error()) {
+        app->exec();
+        return -1;
+    }
 
-    return app.exec();
+    /* Initialize some parameters before boot. */
+    app->init_common();
+
+    /* Boot application. */
+    app->init_for_normal_boot();
+
+    const auto error_code = app->error();
+
+    delete app;
+    app = nullptr;
+
+    return error_code;
 }
